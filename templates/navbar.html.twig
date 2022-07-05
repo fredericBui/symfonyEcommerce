@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Symfony E-Commerce</a>
+    <a class="navbar-brand" href={{path("app_home")}}>Symfony E-Commerce</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,6 +17,13 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Contact</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href={{path("app_register")}}>Register</a>
+            <a class="dropdown-item" href={{path("app_login")}}>Login</a>
+            <a class="dropdown-item" href={{path("app_logout")}}>Logout</a>
         </li>
       </ul>
       <form class="d-flex">
