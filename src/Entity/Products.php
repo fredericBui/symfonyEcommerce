@@ -22,6 +22,9 @@ class Products
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $image;
 
+    #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'products')]
+    private $category;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Products
     public function setImage(?string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Categories
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Categories $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
