@@ -19,11 +19,18 @@
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
           <div class="dropdown-menu">
             <a class="dropdown-item" href={{path("app_register")}}>Register</a>
             <a class="dropdown-item" href={{path("app_login")}}>Login</a>
             <a class="dropdown-item" href={{path("app_logout")}}>Logout</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Back office</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href={{path("app_admin_user_index")}}>Users</a>
+            <a class="dropdown-item" href={{path("app_admin_categories_index")}}>Categories</a>
+            <a class="dropdown-item" href={{path("app_admin_products_index")}}>Products</a>
         </li>
       </ul>
       <form class="d-flex">
