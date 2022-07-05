@@ -7,6 +7,7 @@
   <div class="row">
     {% for product in products %}
         <div class="card text-white bg-dark mb-3 col-sm-4 m-auto" style="max-width: 20rem;">
+            <div class="card-header">{{ product.category }}</div>
             <div class="card-body">
                 <img src={{ product.image }} alt={{ product.name }} class="w-100"/>
                 <h4 class="card-title">{{ product.name }}</h4>
