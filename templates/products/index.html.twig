@@ -1,8 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProductsController!{% endblock %}
+{% block title %}Products{% endblock %}
 
 {% block body %}
+<div class="d-flex p-5">
+  <form>
+    <button type="button submit" name="filter" value="all" class="btn btn-info mx-3">ALL</button>
+  </form>
+  {% for category in categories %}
+    <form>
+      <button type="button submit" name="filter" value={{category.id}} class="btn btn-info mx-3">{{category.name}}</button>
+    </form>
+  {% endfor %}
+</div>
+
 <div class="container">
   <div class="row">
     {% for product in products %}
@@ -10,10 +21,11 @@
             <div class="card-header">{{ product.category }}</div>
             <div class="card-body">
                 <img src={{ product.image }} alt={{ product.name }} class="w-100"/>
-                <h4 class="card-title">{{ product.name }}</h4>
+                <h4 class="card-title my-3">{{ product.name }}</h4>
                 <p class="card-text">Price : {{ product.price }} €</p>
+                <p class="card-text">{{ product.description }}</p>
                 <a href="{{path('app_cart_add_Products', {'id' : product.id} )}}">
-                  <button>+ Add to cart</button>
+                  <button class="btn btn-success">+ Add to cart</button>
                 </a>
             </div>
         </div>
