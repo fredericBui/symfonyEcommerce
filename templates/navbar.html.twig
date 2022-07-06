@@ -16,15 +16,9 @@
           <a class="nav-link" href={{path("app_products")}}>Products</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Contact</a>
+          <a class="nav-link" href={{path("app_contact")}}>Contact</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account</a>
-          <div class="dropdown-menu">
-            <a class="dropdown-item" href={{path("app_register")}}>Register</a>
-            <a class="dropdown-item" href={{path("app_login")}}>Login</a>
-            <a class="dropdown-item" href={{path("app_logout")}}>Logout</a>
-        </li>
+        {% if is_granted('ROLE_ADMIN') %}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Back office</a>
           <div class="dropdown-menu">
@@ -32,11 +26,99 @@
             <a class="dropdown-item" href={{path("app_admin_categories_index")}}>Categories</a>
             <a class="dropdown-item" href={{path("app_admin_products_index")}}>Products</a>
         </li>
+        {% endif %}
       </ul>
-      <form class="d-flex">
+      <a href={{path("app_cart_index")}} style="position:relative">
+        <i id="cartLogo" class="fa-solid fa-cart-shopping fa-xl"></i>
+        <div id="cartQuantity">
+          {% set cartQuantity = 0 %}
+          {% for item in app.session.get('cart') %}
+            {% set cartQuantity = cartQuantity + item %}
+          {% endfor %}
+          {{cartQuantity}}
+        </div>
+      </a>
+      <div id="accountLogo" onclick="displayAccount()">
+        <i class="fa-solid fa-user fa-xl"></i>
+      </div>
+      <div id="account">
+        <ul>
+          {% if app.user %}
+            <li>
+              <a href={{path("app_logout")}}>Logout</a>
+            </li>
+          {% else %}
+            <li>
+              <a href={{path("app_register")}}>Register</a>
+            </li>
+            <li>
+              <a href={{path("app_login")}}>Login</a>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+      <style>
+        #cartLogo{
+          color:white; 
+          padding:0 20px;
+        }
+
+        #cartQuantity{
+          position:absolute; 
+          top:-15px; 
+          right:5px;
+          background-color:grey;
+          color:white;
+          border-radius:1em;
+          width:20px;
+          display:flex;
+          justify-content:center;
+        }
+
+        #accountLogo{
+          position:relative; 
+          background-color:white; 
+          width:50px; 
+          height:50px; 
+          border-radius:50%; 
+          display:flex; 
+          justify-content:center; 
+          align-items:center; 
+          cursor:pointer;
+        }
+
+        #account{
+          position:absolute; 
+          right:20px; 
+          top:90px; 
+          padding:0px 30px; 
+          z-index:2; 
+          border-radius:0.5em; 
+          display:none;
+          background-color:white;
+        }
+
+        #account ul{
+          list-style: none; 
+          padding:0;
+        }
+      </style>
+      <script>
+        account = document.getElementById("account");
+        account.style.display="none";
+
+        function displayAccount(){        
+          if(account.style.display == 'none'){
+            account.style.display="flex";
+          }else{
+            account.style.display="none";
+          }
+        }
+      </script>
+      {# <form class="d-flex">
         <input class="form-control me-sm-2" type="text" placeholder="Search">
         <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      </form> #}
     </div>
   </div>
 </nav>
