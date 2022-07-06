@@ -3,53 +3,59 @@
 {% block title %}Hello CartController!{% endblock %}
 
 {% block body %}
-<h1>YOUR CART</h1>
+<section class="container py-5">
+    <div>
+        <h1>CART</h1>
 
-{% if items|length > 0 %}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Product</th>
-                <th>Image</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Total</th>
-                <th></th>
-            <tr>
-        </thead>
-        <tbody>
-        {% for item in items  %}
-            <tr>
-                <td>{{item.product.name}}</td>
-                <td>
-                    <img src={{item.product.image}} alt={{item.product.name}} class="w-25" >
-                </td>
-                <td>{{item.product.price}} €</td>
-                <td>{{item.quantity}}</td>
-                <td>{{item.quantity * item.product.price}} €</td>
-                <td>
-                    <a href="{{path('app_cart_remove', {'id' : item.product.id} )}}" class="btn btn-danger btn-sm">
-                        Delete {{item.product.id}}
-                    </a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3" class="text-end">Total : </td>
-                <td>{{total}} €</td>
-                <td>
-                    <a href="{{path('app_checkout')}}" class="btn btn-success btn-sm">
-                        BUY
-                    </a>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-{% else %}
-    <h2>Cart Empty</h2>
-{% endif %}
-
+        {% if items|length > 0 %}
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th></th>
+                    <tr>
+                </thead>
+                <tbody>
+                {% for item in items  %}
+                    <tr>
+                        <td>{{item.product.name}}</td>
+                        <td>
+                            <img src={{item.product.image}} alt={{item.product.name}} class="w-25" >
+                        </td>
+                        <td>{{item.product.price}} €</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.quantity * item.product.price}} €</td>
+                        <td>
+                            <a href="{{path('app_cart_remove', {'id' : item.product.id} )}}" class="btn btn-danger btn-sm">
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3" class="text-end">Total : </td>
+                        <td>{{total}} €</td>
+                        <td>
+                            <a href="{{path('app_checkout')}}" class="btn btn-success btn-sm">
+                                BUY
+                            </a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        {% else %}
+            <h3>Cart Empty !</h3>
+            <a href="{{path('app_products')}}" class="btn btn-success btn-sm">
+                Going back to products
+            </a>
+        {% endif %}
+    </div>
+</section>
 
 {% endblock %}
