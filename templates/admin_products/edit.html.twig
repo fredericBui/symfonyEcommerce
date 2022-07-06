@@ -3,11 +3,12 @@
 {% block title %}Edit Products{% endblock %}
 
 {% block body %}
+    <div class="container my-5">
     <h1>Edit Products</h1>
+        {{ include('admin_products/_form.html.twig', {'button_label': 'Update'}) }}
 
-    {{ include('admin_products/_form.html.twig', {'button_label': 'Update'}) }}
+        <a href="{{ path('app_admin_products_index') }}">back to list</a>
 
-    <a href="{{ path('app_admin_products_index') }}">back to list</a>
-
-    {{ include('admin_products/_delete_form.html.twig') }}
+        {{ include('admin_products/_delete_form.html.twig') }}
+    </div>
 {% endblock %}

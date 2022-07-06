@@ -3,9 +3,11 @@
 {% block title %}New Categories{% endblock %}
 
 {% block body %}
-    <h1>Create new Categories</h1>
+    <div class="container my-5">
+        <h1>Create new Categories</h1>
 
-    {{ include('admin_categories/_form.html.twig') }}
+        {{ include('admin_categories/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_categories_index') }}">back to list</a>
+        <a href="{{ path('app_admin_categories_index') }}">back to list</a>
+    </div>
 {% endblock %}
