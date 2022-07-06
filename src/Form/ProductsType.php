@@ -13,6 +13,7 @@ class ProductsType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('description')
             ->add('price')
             ->add('image')
             ->add('category')

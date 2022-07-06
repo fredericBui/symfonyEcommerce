@@ -25,6 +25,9 @@ class Products
     #[ORM\ManyToOne(targetEntity: Categories::class, inversedBy: 'products')]
     private $category;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $description;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Products
     public function setCategory(?Categories $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
