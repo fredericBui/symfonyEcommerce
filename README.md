@@ -33,6 +33,25 @@ Congratulation, your ready to develop !
 Now your can register a new user and edit role to ROLE_ADMIN on phpMyAdmin to see the backoffice option in the navbar.
 
 When adding new product be sure that all images have the same size otherwise retouch it.
-
   
 This project use Bootswatch Lux theme, fill free to change it or just going back to the default Bootstrap theme in the base template.
+
+**Advices for production :**
+
+Server configuration :
+- PHP 8.1
+- Customize the connexion string
+- Add the following code in a .htaccess file if needed :
+
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+    RewriteBase /
+    RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+    RewriteRule ^ %1 [L,NE,R=302]
+    RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+</IfModule>
+
+**How to improve this project :**
+- Create a mailing service
+- Create a cart service
+- Create an uploader service
