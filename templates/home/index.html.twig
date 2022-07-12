@@ -1,11 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Symfony | Home{% endblock %}
 
 {% block body %}
+<style>
+.category-container {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: black;
+}
+
+.category-container:hover .overlay {
+  opacity: 0.8;
+}
+
+.text {
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+</style>
 
 <main>
-
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner" style="height:450px">
             <div class="carousel-item active">
@@ -28,10 +59,42 @@
         </button>
     </div>
 
-    <section class="text-center">
-        <h1 class="text-center p-5">Welcome to the open source symfony e-commerce !</h1>
-        <a class="btn btn-success" href="https://github.com/fredericBui/symfonyEcommerce">Clone this project</a>
-    </section>
+    <section class="container">
+        <h1 class="text-center py-5">Welcome to the open source symfony e-commerce !</h1>
 
+        <h1>Products categories</h1>
+        <article class="row">
+        {% for category in categories %}
+            <div class="col-sm-6 category-container">                
+                <img class="w-100 py-2" src={{category.image}} alt={{category.name}} />
+                <a class="overlay" href="http://127.0.0.1:8000/products?filter={{category.id}}">
+                    <div class="text">{{category.name}}</div>
+                </a>
+            </div>
+        {% endfor %}
+        </article>
+    </section>
+    <section class="container my-5">
+        <h1>Backoffice system</h1>
+        <div class="video-responsive">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/y9kT5W3gUi4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
 </main>
+<style>
+.video-responsive { 
+    overflow:hidden; 
+    padding-bottom:56.25%; 
+    position:relative; 
+    height:0;
+}
+
+.video-responsive iframe {
+    left:0; 
+    top:0; 
+    height:100%;
+    width:100%;
+    position:absolute;
+}
+</style>
 {% endblock %}
