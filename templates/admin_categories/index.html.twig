@@ -19,7 +19,9 @@
             <tr>
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
-                <td>{{ category.image }}</td>
+                <td>
+                    <img src={{ category.image }} class="w-50"/>
+                </td>
                 <td>
                     <a href="{{ path('app_admin_categories_show', {'id': category.id}) }}">show</a>
                     <a href="{{ path('app_admin_categories_edit', {'id': category.id}) }}">edit</a>
@@ -33,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_categories_new') }}">Create new</a>
+    <a class="btn btn-success"  href="{{ path('app_admin_categories_new') }}">Create new</a>
 {% endblock %}

@@ -7,7 +7,7 @@
     <h1>Edit Products</h1>
         {{ include('admin_products/_form.html.twig', {'button_label': 'Update'}) }}
 
-        <a href="{{ path('app_admin_products_index') }}">back to list</a>
+        <a class="btn btn-primary" href="{{ path('app_admin_products_index') }}">back to list</a>
 
         {{ include('admin_products/_delete_form.html.twig') }}
     </div>

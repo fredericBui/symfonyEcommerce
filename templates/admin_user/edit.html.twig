@@ -8,7 +8,7 @@
 
         {{ include('admin_user/_form.html.twig', {'button_label': 'Update'}) }}
 
-        <a href="{{ path('app_admin_user_index') }}">back to list</a>
+        <a class="btn btn-primary" href="{{ path('app_admin_user_index') }}">back to list</a>
 
         {{ include('admin_user/_delete_form.html.twig') }}
     </div>

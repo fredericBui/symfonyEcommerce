@@ -5,7 +5,7 @@
 {% block body %}
     <h1>User index</h1>
 
-    <table class="table  table-hover">
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Id</th>
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_admin_user_new') }}">Create new</a>
+    <a class="btn btn-success" href="{{ path('app_admin_user_new') }}">Create new</a>
 {% endblock %}
