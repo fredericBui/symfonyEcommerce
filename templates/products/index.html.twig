@@ -3,13 +3,13 @@
 {% block title %}Products{% endblock %}
 
 {% block body %}
-<div class="d-flex p-5">
+<div class="container d-flex flex-wrap my-3">
   <form>
-    <button type="button submit" name="filter" value="all" class="btn btn-info mx-3">ALL</button>
+    <button type="button submit" name="filter" value="all" class="btn btn-info m-3">ALL</button>
   </form>
   {% for category in categories %}
     <form>
-      <button type="button submit" name="filter" value={{category.id}} class="btn btn-info mx-3">{{category.name}}</button>
+      <button type="button submit" name="filter" value={{category.id}} class="btn btn-info m-3">{{category.name}}</button>
     </form>
   {% endfor %}
 </div>
@@ -17,7 +17,8 @@
 <div class="container">
   <div class="row">
     {% for product in products %}
-        <div class="card text-white bg-dark mb-3 col-sm-4 m-auto" style="max-width: 20rem;">
+        <div class="col-sm-6 col-md-4 my-2">
+          <div class="card text-white bg-dark" >
             <div class="card-header">{{ product.category }}</div>
             <div class="card-body">
                 <img src={{ product.image }} alt={{ product.name }} class="w-100"/>
@@ -28,6 +29,7 @@
                   <button class="btn btn-success">+ Add to cart</button>
                 </a>
             </div>
+          </div>
         </div>
     {% endfor %}
   </div>
